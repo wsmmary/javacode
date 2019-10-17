@@ -1,0 +1,29 @@
+/*
+Given an array of integers, return indices of the two numbers such that they add up to a specific target.
+*/
+
+class Solution {
+    public int[] twoSum(int[] nums, int target) {
+        int[] returnIndex=new int[2];
+        int temp,position;
+        for(int i=0;i<nums.length;i++){
+            temp=target-nums[i];
+            position=contain(nums,temp,i);
+            if(position>0){
+                returnIndex[0]=i;
+                returnIndex[1]=position;
+                break;
+                //return returnIndex;
+            }
+        }
+        return returnIndex;
+    }
+    public int contain(int[] arr,int num,int po){
+        for(int i=0;i<arr.length;i++){
+            if(po!=i){
+                if(arr[i]==num) return i;
+            }
+        }
+        return -1;
+    }
+}

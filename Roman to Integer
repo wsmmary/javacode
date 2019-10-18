@@ -1,0 +1,24 @@
+class Solution {
+    public int romanToInt(String s) {
+        HashMap<Character,Integer> mm=new HashMap<Character,Integer>();
+        mm.put('I',1);
+        mm.put('V',5);
+        mm.put('X',10);
+        mm.put('L',50);
+        mm.put('C',100);
+        mm.put('D',500);
+        mm.put('M',1000);
+        
+        int re=0,temp,temp1;
+        for(int i=0;i<s.length()-1;i++){
+            temp=mm.get(s.charAt(i));
+            temp1=mm.get(s.charAt(i+1));
+            if(temp1>temp){
+                re-=mm.get(s.charAt(i));     
+            }else{
+            re+=mm.get(s.charAt(i));}
+        }
+        re+=mm.get(s.charAt(s.length()-1));
+        return re;
+    }
+}
